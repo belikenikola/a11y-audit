@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessible Test Page</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+    .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+    nav { background: #333; padding: 10px; }
+    nav a { color: #fff; margin-right: 15px; }
+    main { padding: 20px 0; }
+    footer { border-top: 1px solid #ccc; padding-top: 20px; }
+    .skip-link { position: absolute; top: -40px; left: 0; background: #000; color: #fff; padding: 8px; z-index: 100; }
+    .skip-link:focus { top: 0; }
+    button { padding: 10px 20px; background: #007bff; color: #fff; border: none; cursor: pointer; }
+    button:focus { outline: 3px solid #0056b3; }
+    input { padding: 8px; border: 1px solid #666; }
+    input:focus { outline: 2px solid #007bff; }
+    label { display: block; margin-bottom: 5px; }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header role="banner">
+    <nav role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main-content" role="main">
+    <h1>Welcome to Our Accessible Website</h1>
+
+    <section aria-labelledby="intro-heading">
+      <h2 id="intro-heading">Introduction</h2>
+      <p>This is a sample page that follows WCAG 2.1 accessibility guidelines.</p>
+      <img src="hero.jpg" alt="A beautiful landscape showing mountains at sunset">
+    </section>
+
+    <section aria-labelledby="form-heading">
+      <h2 id="form-heading">Contact Form</h2>
+      <form action="/submit" method="post">
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required aria-required="true">
+        </div>
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required aria-required="true">
+        </div>
+        <div>
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="4"></textarea>
+        </div>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <section aria-labelledby="features-heading">
+      <h2 id="features-heading">Features</h2>
+      <ul>
+        <li>Semantic HTML structure</li>
+        <li>Proper heading hierarchy</li>
+        <li>ARIA landmarks</li>
+        <li>Form labels</li>
+        <li>Alt text for images</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <p>&copy; 2024 Accessible Company. All rights reserved.</p>
+  </footer>
+</body>
+</html>

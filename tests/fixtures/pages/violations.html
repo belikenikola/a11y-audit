@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<!-- Missing lang attribute - WCAG 3.1.1 -->
+<head>
+  <meta charset="UTF-8">
+  <!-- Missing viewport meta - potential issue -->
+  <title></title>
+  <!-- Empty title - WCAG 2.4.2 -->
+  <style>
+    body { font-family: Arial; }
+    /* Low contrast text - WCAG 1.4.3 */
+    .low-contrast { color: #999; background: #fff; }
+    .hero { background: #f0f0f0; padding: 20px; }
+  </style>
+</head>
+<body>
+  <!-- No skip link - WCAG 2.4.1 -->
+  <!-- No landmarks - WCAG 1.3.1 -->
+
+  <div class="header">
+    <!-- Using div instead of nav -->
+    <a href="/">Home</a>
+    <a href="/about"></a>
+    <!-- Empty link text - WCAG 2.4.4 -->
+    <a href="/contact">Contact</a>
+  </div>
+
+  <div class="hero">
+    <!-- Skipped heading level - WCAG 1.3.1 -->
+    <h3>Welcome to Our Site</h3>
+
+    <p class="low-contrast">This text has poor contrast and is hard to read.</p>
+
+    <!-- Image without alt text - WCAG 1.1.1 -->
+    <img src="logo.png">
+
+    <!-- Image with empty alt when it should have description -->
+    <img src="infographic.png" alt="">
+
+    <!-- Duplicate ID - WCAG 4.1.1 -->
+    <div id="duplicate">First element</div>
+    <div id="duplicate">Second element</div>
+  </div>
+
+  <div class="form-section">
+    <h4>Sign Up Form</h4>
+
+    <form action="/submit" method="post">
+      <!-- Input without label - WCAG 1.3.1, 3.3.2 -->
+      <input type="text" name="username" placeholder="Username">
+
+      <!-- Input without label -->
+      <input type="email" name="email" placeholder="Email">
+
+      <!-- Input without label -->
+      <input type="password" name="password" placeholder="Password">
+
+      <!-- Button without accessible name -->
+      <button type="submit">
+        <img src="arrow.png">
+      </button>
+    </form>
+  </div>
+
+  <div class="content">
+    <!-- Invalid ARIA attribute -->
+    <div aria-hidden="yes">This should be true or false</div>
+
+    <!-- ARIA role with missing required children -->
+    <ul role="tablist">
+      <li>Tab 1</li>
+      <li>Tab 2</li>
+    </ul>
+
+    <!-- Link that opens in new window without warning -->
+    <a href="https://external.com" target="_blank">External Link</a>
+  </div>
+
+  <div class="footer">
+    <p>Copyright 2024</p>
+  </div>
+</body>
+</html>
