@@ -1,0 +1,642 @@
+{
+  "success": true,
+  "url": "https://belikenikola.com/",
+  "timestamp": "2026-01-03T12:37:24.330Z",
+  "level": "AA",
+  "summary": {
+    "violations": 4,
+    "violationInstances": 55,
+    "incomplete": 0,
+    "passes": 39,
+    "inapplicable": 49,
+    "score": 94,
+    "effortBreakdown": {
+      "low": 0,
+      "medium": 2,
+      "high": 2,
+      "totalElements": 55
+    }
+  },
+  "violations": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "wcag": [
+        "1.4.3"
+      ],
+      "wcagLevel": "AA",
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+      "nodes": [
+        {
+          "html": "<div class=\"text-muted-foreground/70 hover:text-foreground font-semibold transition-colors\">ADS FREE</div>",
+          "selector": ".text-muted-foreground\\/70.hover\\:text-foreground.transition-colors:nth-child(1)",
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.71 (foreground color: #9d9d9d, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+          "impact": "serious"
+        },
+        {
+          "html": "<div class=\"text-muted-foreground/70 hover:text-foreground font-semibold transition-colors\">COMPLIANT &amp; SECURE</div>",
+          "selector": ".text-muted-foreground\\/70.hover\\:text-foreground.transition-colors:nth-child(2)",
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.71 (foreground color: #9d9d9d, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+          "impact": "serious"
+        },
+        {
+          "html": "<div class=\"text-muted-foreground/70 hover:text-foreground font-semibold transition-colors\">NO PAYMENT CARD REQUIRED</div>",
+          "selector": ".text-muted-foreground\\/70.hover\\:text-foreground.transition-colors:nth-child(3)",
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.71 (foreground color: #9d9d9d, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+          "impact": "serious"
+        },
+        {
+          "html": "<a data-state=\"closed\" data-slot=\"hover-card-trigger\" class=\"font-bold underline text-[#74F2CE]\">MVP</a>",
+          "selector": ".underline",
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.36 (foreground color: #74f2ce, background color: #ffffff, font size: 15.0pt (20px), font weight: bold). Expected contrast ratio of 3:1",
+          "impact": "serious"
+        }
+      ]
+    },
+    {
+      "id": "nested-interactive",
+      "impact": "serious",
+      "wcag": [
+        "4.1.2"
+      ],
+      "wcagLevel": "A",
+      "description": "Ensure interactive controls are not nested as they are not always announced by screen readers or can cause focus problems for assistive technologies",
+      "help": "Interactive controls must not be nested",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/nested-interactive?application=playwright",
+      "nodes": [
+        {
+          "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\">",
+          "selector": "#ai-implementation > .md\\:px-6.\\32 xl\\:max-w-\\[1400px\\].container > .lg\\:grid-cols-2.lg\\:gap-12.max-w-5xl > .space-y-4.flex-col.justify-center > .min-\\[400px\\]\\:flex-row.lg\\:my-10.flex-col > .hover\\:bg-primary\\/90.text-primary-foreground.bg-primary",
+          "failureSummary": "Fix any of the following:\n  Element has focusable descendants",
+          "impact": "serious"
+        },
+        {
+          "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\">",
+          "selector": "#ai-implementation > .md\\:px-6.\\32 xl\\:max-w-\\[1400px\\].container > .lg\\:grid-cols-2.lg\\:gap-12.max-w-5xl > .space-y-4.flex-col.justify-center > .min-\\[400px\\]\\:flex-row.lg\\:my-10.flex-col > .dark\\:border-input.dark\\:hover\\:bg-input\\/50.hover\\:bg-accent",
+          "failureSummary": "Fix any of the following:\n  Element has focusable descendants",
+          "impact": "serious"
+        },
+        {
+          "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\">",
+          "selector": ".sm\\:flex-row > .hover\\:bg-primary\\/90.text-primary-foreground.bg-primary",
+          "failureSummary": "Fix any of the following:\n  Element has focusable descendants",
+          "impact": "serious"
+        },
+        {
+          "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\">",
+          "selector": ".sm\\:flex-row > .dark\\:border-input.dark\\:hover\\:bg-input\\/50.hover\\:bg-accent",
+          "failureSummary": "Fix any of the following:\n  Element has focusable descendants",
+          "impact": "serious"
+        },
+        {
+          "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\">",
+          "selector": "#build-mvp > .min-\\[400px\\]\\:flex-row.lg\\:my-10.flex-col > .hover\\:bg-primary\\/90.text-primary-foreground.bg-primary",
+          "failureSummary": "Fix any of the following:\n  Element has focusable descendants",
+          "impact": "serious"
+        },
+        {
+          "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\">",
+          "selector": "#build-mvp > .min-\\[400px\\]\\:flex-row.lg\\:my-10.flex-col > .dark\\:border-input.dark\\:hover\\:bg-input\\/50.hover\\:bg-accent",
+          "failureSummary": "Fix any of the following:\n  Element has focusable descendants",
+          "impact": "serious"
+        },
+        {
+          "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\">",
+          "selector": "#tech-debt > .md\\:px-6.\\32 xl\\:max-w-\\[1400px\\].container > .lg\\:grid-cols-2.lg\\:gap-12.max-w-5xl > .space-y-4.flex-col.justify-center > .min-\\[400px\\]\\:flex-row.lg\\:my-10.flex-col > .hover\\:bg-primary\\/90.text-primary-foreground.bg-primary",
+          "failureSummary": "Fix any of the following:\n  Element has focusable descendants",
+          "impact": "serious"
+        },
+        {
+          "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\">",
+          "selector": "#tech-debt > .md\\:px-6.\\32 xl\\:max-w-\\[1400px\\].container > .lg\\:grid-cols-2.lg\\:gap-12.max-w-5xl > .space-y-4.flex-col.justify-center > .min-\\[400px\\]\\:flex-row.lg\\:my-10.flex-col > .dark\\:border-input.dark\\:hover\\:bg-input\\/50.hover\\:bg-accent",
+          "failureSummary": "Fix any of the following:\n  Element has focusable descendants",
+          "impact": "serious"
+        }
+      ]
+    },
+    {
+      "id": "landmark-one-main",
+      "impact": "moderate",
+      "wcag": [],
+      "wcagLevel": "A",
+      "description": "Ensure the document has a main landmark",
+      "help": "Document should have one main landmark",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+      "nodes": [
+        {
+          "html": "<html lang=\"en\">",
+          "selector": "html",
+          "failureSummary": "Fix all of the following:\n  Document does not have a main landmark",
+          "impact": "moderate"
+        }
+      ]
+    },
+    {
+      "id": "region",
+      "impact": "moderate",
+      "wcag": [],
+      "wcagLevel": "A",
+      "description": "Ensure all page content is contained by landmarks",
+      "help": "All page content should be contained by landmarks",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+      "nodes": [
+        {
+          "html": "<section class=\"py-12 md:py-20\">",
+          "selector": "body > .md\\:py-20",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<div class=\"flex flex-col items-center justify-center space-y-4 text-center\">",
+          "selector": "#ai-implementation > .md\\:px-6.\\32 xl\\:max-w-\\[1400px\\].container > .space-y-4.text-center.flex-col",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<h3 class=\"text-xl font-bold\">Run AI agents and save time</h3>",
+          "selector": "#ai-implementation > .md\\:px-6.\\32 xl\\:max-w-\\[1400px\\].container > .lg\\:grid-cols-2.lg\\:gap-12.max-w-5xl > .space-y-4.flex-col.justify-center > ul > li:nth-child(1) > .gap-1.grid > .gap-2.items-center.flex > .text-xl",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<p class=\"text-muted-foreground\">",
+          "selector": "#ai-implementation > .md\\:px-6.\\32 xl\\:max-w-\\[1400px\\].container > .lg\\:grid-cols-2.lg\\:gap-12.max-w-5xl > .space-y-4.flex-col.justify-center > ul > li:nth-child(1) > .gap-1.grid > p",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<h3 class=\"text-xl font-bold\">Smart search</h3>",
+          "selector": "#ai-implementation > .md\\:px-6.\\32 xl\\:max-w-\\[1400px\\].container > .lg\\:grid-cols-2.lg\\:gap-12.max-w-5xl > .space-y-4.flex-col.justify-center > ul > li:nth-child(2) > .gap-1.grid > .gap-2.items-center.flex > .text-xl",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<p class=\"text-muted-foreground\">Leverage vector indexing and LLMs to build a smart search engine for your business. Put your data in the driving seat and see how data-driven decisions are leading pro...",
+          "selector": "#ai-implementation > .md\\:px-6.\\32 xl\\:max-w-\\[1400px\\].container > .lg\\:grid-cols-2.lg\\:gap-12.max-w-5xl > .space-y-4.flex-col.justify-center > ul > li:nth-child(2) > .gap-1.grid > p",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<h3 class=\"text-xl font-bold\">Use RAG to build AI chatbot</h3>",
+          "selector": "#ai-implementation > .md\\:px-6.\\32 xl\\:max-w-\\[1400px\\].container > .lg\\:grid-cols-2.lg\\:gap-12.max-w-5xl > .space-y-4.flex-col.justify-center > ul > li:nth-child(3) > .gap-1.grid > .gap-2.items-center.flex > .text-xl",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<p class=\"text-muted-foreground\">Communicate with your tech in natural language. Use RAG to build AI chatbot that can answer questions and help your customers.</p>",
+          "selector": "#ai-implementation > .md\\:px-6.\\32 xl\\:max-w-\\[1400px\\].container > .lg\\:grid-cols-2.lg\\:gap-12.max-w-5xl > .space-y-4.flex-col.justify-center > ul > li:nth-child(3) > .gap-1.grid > p",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<div class=\"relative aspect-video overflow-hidden rounded-xl bg-muted\">",
+          "selector": "#ai-implementation > .md\\:px-6.\\32 xl\\:max-w-\\[1400px\\].container > .lg\\:grid-cols-2.lg\\:gap-12.max-w-5xl > .aspect-video.bg-muted.overflow-hidden",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<div class=\"relative flex aspect-[4/5] w-full items-center md:col-span-2 md:aspect-auto md:h-[600px]\">",
+          "selector": ".aspect-\\[4\\/5\\]",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<div class=\"flex items-center space-x-3\"><div class=\"inline-block rounded-full bg-primary/10 px-3 py-1 text-sm text-primary\">AI B2B SaaS</div><h2 class=\"text-primary text-sm font-semibold tracking-wid...",
+          "selector": ".space-x-3",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<h2 class=\"scroll-m-20 text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl\"><span class=\"block text-muted-foreground\">Completly FREE</span><span class=\"text-primary mt-1 block\">AI travel plann...",
+          "selector": ".scroll-m-20",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<p class=\"text-muted-foreground max-w-xl\">",
+          "selector": ".max-w-xl",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<div class=\"pt-2\">",
+          "selector": ".pt-2",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<div class=\"flex flex-col items-center justify-center space-y-4 text-center\">",
+          "selector": "#build-mvp > .space-y-4.text-center.flex-col",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<h3 class=\"font-bold\">Performant</h3>",
+          "selector": ".p-0.bg-card.text-card-foreground:nth-child(1) > .p-6.space-y-2[data-slot=\"card-content\"] > h3",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<p class=\"text-muted-foreground text-sm\">Optimized for speed and efficiency, ensuring your application runs smoothly.</p>",
+          "selector": ".p-0.bg-card.text-card-foreground:nth-child(1) > .p-6.space-y-2[data-slot=\"card-content\"] > p",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<h3 class=\"font-bold\">Secure</h3>",
+          "selector": ".p-0.bg-card.text-card-foreground:nth-child(2) > .p-6.space-y-2[data-slot=\"card-content\"] > h3",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<p class=\"text-muted-foreground text-sm\">Built-in security features to protect your data and users.</p>",
+          "selector": ".p-0.bg-card.text-card-foreground:nth-child(2) > .p-6.space-y-2[data-slot=\"card-content\"] > p",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<h3 class=\"font-bold\">Resilient</h3>",
+          "selector": ".p-0.bg-card.text-card-foreground:nth-child(3) > .p-6.space-y-2[data-slot=\"card-content\"] > h3",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<p class=\"text-muted-foreground text-sm\">Validating the core idea isn`t derailed by technical instability.</p>",
+          "selector": ".p-0.bg-card.text-card-foreground:nth-child(3) > .p-6.space-y-2[data-slot=\"card-content\"] > p",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<h3 class=\"font-bold\">Scalable</h3>",
+          "selector": ".p-0.bg-card.text-card-foreground:nth-child(4) > .p-6.space-y-2[data-slot=\"card-content\"] > h3",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<p class=\"text-muted-foreground text-sm\">Able to handle increasing user base and data volume.</p>",
+          "selector": ".p-0.bg-card.text-card-foreground:nth-child(4) > .p-6.space-y-2[data-slot=\"card-content\"] > p",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<div class=\"flex flex-col items-center justify-center space-y-4 text-center\">",
+          "selector": "#tech-debt > .md\\:px-6.\\32 xl\\:max-w-\\[1400px\\].container > .space-y-4.text-center.flex-col",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<h3 class=\"text-xl font-bold\">Risks of having tech debt</h3>",
+          "selector": "#tech-debt > .md\\:px-6.\\32 xl\\:max-w-\\[1400px\\].container > .lg\\:grid-cols-2.lg\\:gap-12.max-w-5xl > .space-y-4.flex-col.justify-center > ul > li:nth-child(1) > .gap-1.grid > .gap-2.items-center.flex > .text-xl",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<p class=\"text-muted-foreground\">",
+          "selector": "#tech-debt > .md\\:px-6.\\32 xl\\:max-w-\\[1400px\\].container > .lg\\:grid-cols-2.lg\\:gap-12.max-w-5xl > .space-y-4.flex-col.justify-center > ul > li:nth-child(1) > .gap-1.grid > p",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<h3 class=\"text-xl font-bold\">Tech debt starts with business decisions</h3>",
+          "selector": "#tech-debt > .md\\:px-6.\\32 xl\\:max-w-\\[1400px\\].container > .lg\\:grid-cols-2.lg\\:gap-12.max-w-5xl > .space-y-4.flex-col.justify-center > ul > li:nth-child(2) > .gap-1.grid > .gap-2.items-center.flex > .text-xl",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<p class=\"text-muted-foreground\">Tech debt is created long before first line of code is written. It is a result of business decisions, architectural decisions and technical choices made by strategy cr...",
+          "selector": "#tech-debt > .md\\:px-6.\\32 xl\\:max-w-\\[1400px\\].container > .lg\\:grid-cols-2.lg\\:gap-12.max-w-5xl > .space-y-4.flex-col.justify-center > ul > li:nth-child(2) > .gap-1.grid > p",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<h3 class=\"text-xl font-bold\">Avoid over-optimization</h3>",
+          "selector": "#tech-debt > .md\\:px-6.\\32 xl\\:max-w-\\[1400px\\].container > .lg\\:grid-cols-2.lg\\:gap-12.max-w-5xl > .space-y-4.flex-col.justify-center > ul > li:nth-child(3) > .gap-1.grid > .gap-2.items-center.flex > .text-xl",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<p class=\"text-muted-foreground\">Once optimization is showing results, it is easy to fall into trap of never ending refactoring. Deciding where is the line between healthy and unhealthy tech debt has ...",
+          "selector": "#tech-debt > .md\\:px-6.\\32 xl\\:max-w-\\[1400px\\].container > .lg\\:grid-cols-2.lg\\:gap-12.max-w-5xl > .space-y-4.flex-col.justify-center > ul > li:nth-child(3) > .gap-1.grid > p",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<div class=\"relative aspect-video overflow-hidden rounded-xl bg-muted\">",
+          "selector": "#tech-debt > .md\\:px-6.\\32 xl\\:max-w-\\[1400px\\].container > .lg\\:grid-cols-2.lg\\:gap-12.max-w-5xl > .aspect-video.bg-muted.overflow-hidden",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<div id=\"services\" class=\"w-full pt-12 md:pt-24 lg:pt-32 bg-primary\">",
+          "selector": "#services",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<div class=\"mb-12 flex flex-col items-center justify-center space-y-4 text-center\">",
+          "selector": ".mb-12",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<div class=\"hidden md:block\">",
+          "selector": ".md\\:block",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<div class=\"mt-24 flex flex-col items-center justify-center space-y-4 text-center\">",
+          "selector": ".mt-24",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<div class=\"bg-primary w-full py-12 md:py-16\">",
+          "selector": ".md\\:py-16",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<div class=\"mb-10 text-center\"><h2 class=\"mb-2 text-3xl font-bold tracking-tight sm:text-4xl\">Get in touch</h2><p class=\"text-muted-foreground\">I'd love to hear from you. Please fill out the form belo...",
+          "selector": ".mb-10",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<div>",
+          "selector": "form > div:nth-child(1)",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<div>",
+          "selector": "form > div:nth-child(2)",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<div>",
+          "selector": "form > div:nth-child(3)",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<div>",
+          "selector": "form > div:nth-child(4)",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        },
+        {
+          "html": "<p class=\"text-muted-foreground text-center text-sm\">Messages are sent to<!-- --> <span class=\"font-medium\">getintouch@belikenikola.com</span><br>I'll respond within 1-2 business days.</p>",
+          "selector": "form > .text-center",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+          "impact": "moderate"
+        }
+      ]
+    }
+  ],
+  "incomplete": [],
+  "passes": [
+    {
+      "id": "aria-allowed-attr",
+      "description": "Ensure an element's role supports its ARIA attributes"
+    },
+    {
+      "id": "aria-allowed-role",
+      "description": "Ensure role attribute has an appropriate value for the element"
+    },
+    {
+      "id": "aria-conditional-attr",
+      "description": "Ensure ARIA attributes are used as described in the specification of the element's role"
+    },
+    {
+      "id": "aria-deprecated-role",
+      "description": "Ensure elements do not use deprecated roles"
+    },
+    {
+      "id": "aria-hidden-body",
+      "description": "Ensure aria-hidden=\"true\" is not present on the document body."
+    },
+    {
+      "id": "aria-hidden-focus",
+      "description": "Ensure aria-hidden elements are not focusable nor contain focusable elements"
+    },
+    {
+      "id": "aria-prohibited-attr",
+      "description": "Ensure ARIA attributes are not prohibited for an element's role"
+    },
+    {
+      "id": "aria-required-attr",
+      "description": "Ensure elements with ARIA roles have all required ARIA attributes"
+    },
+    {
+      "id": "aria-roles",
+      "description": "Ensure all elements with a role attribute use a valid value"
+    },
+    {
+      "id": "aria-valid-attr-value",
+      "description": "Ensure all ARIA attributes have valid values"
+    },
+    {
+      "id": "aria-valid-attr",
+      "description": "Ensure attributes that begin with aria- are valid ARIA attributes"
+    },
+    {
+      "id": "avoid-inline-spacing",
+      "description": "Ensure that text spacing set through style attributes can be adjusted with custom stylesheets"
+    },
+    {
+      "id": "button-name",
+      "description": "Ensure buttons have discernible text"
+    },
+    {
+      "id": "bypass",
+      "description": "Ensure each page has at least one mechanism for a user to bypass navigation and jump straight to the content"
+    },
+    {
+      "id": "color-contrast",
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds"
+    },
+    {
+      "id": "document-title",
+      "description": "Ensure each HTML document contains a non-empty <title> element"
+    },
+    {
+      "id": "duplicate-id-aria",
+      "description": "Ensure every id attribute value used in ARIA and in labels is unique"
+    },
+    {
+      "id": "empty-heading",
+      "description": "Ensure headings have discernible text"
+    },
+    {
+      "id": "form-field-multiple-labels",
+      "description": "Ensure form field does not have multiple label elements"
+    },
+    {
+      "id": "heading-order",
+      "description": "Ensure the order of headings is semantically correct"
+    },
+    {
+      "id": "html-has-lang",
+      "description": "Ensure every HTML document has a lang attribute"
+    },
+    {
+      "id": "html-lang-valid",
+      "description": "Ensure the lang attribute of the <html> element has a valid value"
+    },
+    {
+      "id": "image-alt",
+      "description": "Ensure <img> elements have alternative text or a role of none or presentation"
+    },
+    {
+      "id": "image-redundant-alt",
+      "description": "Ensure image alternative is not repeated as text"
+    },
+    {
+      "id": "label-title-only",
+      "description": "Ensure that every form element has a visible label and is not solely labeled using hidden labels, or the title or aria-describedby attributes"
+    },
+    {
+      "id": "label",
+      "description": "Ensure every form element has a label"
+    },
+    {
+      "id": "landmark-contentinfo-is-top-level",
+      "description": "Ensure the contentinfo landmark is at top level"
+    },
+    {
+      "id": "landmark-no-duplicate-contentinfo",
+      "description": "Ensure the document has at most one contentinfo landmark"
+    },
+    {
+      "id": "landmark-unique",
+      "description": "Ensure landmarks are unique"
+    },
+    {
+      "id": "link-in-text-block",
+      "description": "Ensure links are distinguished from surrounding text in a way that does not rely on color"
+    },
+    {
+      "id": "link-name",
+      "description": "Ensure links have discernible text"
+    },
+    {
+      "id": "list",
+      "description": "Ensure that lists are structured correctly"
+    },
+    {
+      "id": "listitem",
+      "description": "Ensure <li> elements are used semantically"
+    },
+    {
+      "id": "meta-viewport-large",
+      "description": "Ensure <meta name=\"viewport\"> can scale a significant amount"
+    },
+    {
+      "id": "meta-viewport",
+      "description": "Ensure <meta name=\"viewport\"> does not disable text scaling and zooming"
+    },
+    {
+      "id": "nested-interactive",
+      "description": "Ensure interactive controls are not nested as they are not always announced by screen readers or can cause focus problems for assistive technologies"
+    },
+    {
+      "id": "page-has-heading-one",
+      "description": "Ensure that the page, or at least one of its frames contains a level-one heading"
+    },
+    {
+      "id": "presentation-role-conflict",
+      "description": "Ensure elements marked as presentational do not have global ARIA or tabindex so that all screen readers ignore them"
+    },
+    {
+      "id": "region",
+      "description": "Ensure all page content is contained by landmarks"
+    }
+  ],
+  "todoList": [
+    {
+      "priority": 1,
+      "category": "high",
+      "task": "Interactive controls must not be nested (8 elements affected)",
+      "ruleId": "nested-interactive",
+      "wcag": [
+        "4.1.2"
+      ],
+      "wcagDescription": "Name, Role, Value",
+      "wcagLevel": "A",
+      "affectedElements": 8,
+      "effort": "medium",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/nested-interactive?application=playwright",
+      "selectors": [
+        "#ai-implementation > .md\\:px-6.\\32 xl\\:max-w-\\[1400px\\].container > .lg\\:grid-cols-2.lg\\:gap-12.max-w-5xl > .space-y-4.flex-col.justify-center > .min-\\[400px\\]\\:flex-row.lg\\:my-10.flex-col > .hover\\:bg-primary\\/90.text-primary-foreground.bg-primary",
+        "#ai-implementation > .md\\:px-6.\\32 xl\\:max-w-\\[1400px\\].container > .lg\\:grid-cols-2.lg\\:gap-12.max-w-5xl > .space-y-4.flex-col.justify-center > .min-\\[400px\\]\\:flex-row.lg\\:my-10.flex-col > .dark\\:border-input.dark\\:hover\\:bg-input\\/50.hover\\:bg-accent",
+        ".sm\\:flex-row > .hover\\:bg-primary\\/90.text-primary-foreground.bg-primary"
+      ]
+    },
+    {
+      "priority": 2,
+      "category": "medium",
+      "task": "Wrap 42 elements in landmark regions",
+      "ruleId": "region",
+      "wcag": [],
+      "wcagDescription": "All page content should be contained by landmarks",
+      "wcagLevel": "A",
+      "affectedElements": 42,
+      "effort": "high",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+      "selectors": [
+        "body > .md\\:py-20",
+        "#ai-implementation > .md\\:px-6.\\32 xl\\:max-w-\\[1400px\\].container > .space-y-4.text-center.flex-col",
+        "#ai-implementation > .md\\:px-6.\\32 xl\\:max-w-\\[1400px\\].container > .lg\\:grid-cols-2.lg\\:gap-12.max-w-5xl > .space-y-4.flex-col.justify-center > ul > li:nth-child(1) > .gap-1.grid > .gap-2.items-center.flex > .text-xl"
+      ]
+    },
+    {
+      "priority": 3,
+      "category": "high",
+      "task": "Fix color contrast ratio on 4 elements",
+      "ruleId": "color-contrast",
+      "wcag": [
+        "1.4.3"
+      ],
+      "wcagDescription": "Contrast (Minimum)",
+      "wcagLevel": "AA",
+      "affectedElements": 4,
+      "effort": "medium",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+      "selectors": [
+        ".text-muted-foreground\\/70.hover\\:text-foreground.transition-colors:nth-child(1)",
+        ".text-muted-foreground\\/70.hover\\:text-foreground.transition-colors:nth-child(2)",
+        ".text-muted-foreground\\/70.hover\\:text-foreground.transition-colors:nth-child(3)"
+      ]
+    },
+    {
+      "priority": 4,
+      "category": "medium",
+      "task": "Add a <main> landmark to the page",
+      "ruleId": "landmark-one-main",
+      "wcag": [],
+      "wcagDescription": "Document should have one main landmark",
+      "wcagLevel": "A",
+      "affectedElements": 1,
+      "effort": "high",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+      "selectors": [
+        "html"
+      ]
+    }
+  ],
+  "metadata": {
+    "testEngine": {
+      "name": "axe-core",
+      "version": "4.11.0"
+    },
+    "testEnvironment": {
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 a11y-audit/1.0",
+      "windowWidth": 1280,
+      "windowHeight": 720
+    }
+  }
+}
