@@ -1,41 +1,46 @@
-# a11y-audit
+# wcag-audit
 
-A command-line accessibility auditor that checks web pages against WCAG 2.1 standards, generates comprehensive reports, and produces prioritized to-do lists for remediation.
+[![npm](https://img.shields.io/npm/v/@belikenikola/wcag-audit.svg)](https://www.npmjs.com/package/@belikenikola/wcag-audit)
+
+A WCAG 2.1 accessibility auditor — **CLI and library**. Checks web pages against WCAG 2.1 (A/AA/AAA), generates JSON/HTML/Markdown reports, and produces prioritized to-do lists for remediation. Powered by [axe-core](https://github.com/dequelabs/axe-core) and [Playwright](https://playwright.dev/).
 
 ## Features
 
-- **WCAG 2.1 Compliance Testing** - Test against Level A, AA, or AAA
-- **Multiple Output Formats** - JSON, HTML, and Markdown reports
-- **Prioritized To-Do Lists** - Actionable remediation tasks sorted by impact
-- **Auth Detection** - Automatically detects login walls and protected pages
-- **CI/CD Ready** - Exit codes for automation pipelines
+- **WCAG 2.1 Compliance Testing** — Test against Level A, AA, or AAA
+- **Multiple Output Formats** — JSON, HTML, and Markdown reports
+- **Prioritized To-Do Lists** — Actionable remediation tasks sorted by impact
+- **Auth Detection** — Automatically detects login walls and protected pages
+- **CI/CD Ready** — Exit codes for automation pipelines
+- **Library API** — Import `runAudit`/`generateReport` into your own tooling, with a pluggable browser launcher for serverless
 
 ## Installation
 
 ```bash
-# Clone and install
-git clone <repository>
-cd a11y-audit
-npm install
+npm install -g @belikenikola/wcag-audit
 
-# Install Playwright browsers (required)
+# Playwright's Chromium is required at runtime (one-time, ~150–300MB)
 npx playwright install chromium
 ```
+
+Or run without installing:
+
+```bash
+npx @belikenikola/wcag-audit https://example.com
+```
+
+> **Note:** No `postinstall` hook is bundled (that would be user-hostile for a library dependency). Install the Chromium binary yourself once with `npx playwright install chromium`.
 
 ## Quick Start
 
 ```bash
 # Basic audit (defaults to WCAG AA, JSON output)
-npm start -- https://example.com
-
-# Or if installed globally
-a11y-audit https://example.com
+wcag-audit https://example.com
 ```
 
 ## Usage
 
 ```
-a11y-audit <url> [options]
+wcag-audit <url> [options]
 
 Arguments:
   url                  URL to audit
@@ -52,49 +57,25 @@ Options:
 
 ## Examples
 
-### Basic Audit
-
 ```bash
-# Audit with default settings (AA level, JSON output)
-a11y-audit https://example.com
-```
+# Different WCAG levels
+wcag-audit https://example.com --level A
+wcag-audit https://example.com --level AAA
 
-### Different WCAG Levels
+# Output formats
+wcag-audit https://example.com --format html
+wcag-audit https://example.com -f html -o ./reports/audit.html
 
-```bash
-# Test only Level A criteria
-a11y-audit https://example.com --level A
-
-# Test up to Level AAA
-a11y-audit https://example.com --level AAA
-```
-
-### Output Formats
-
-```bash
-# Generate HTML report
-a11y-audit https://example.com --format html
-
-# Generate Markdown report
-a11y-audit https://example.com --format md
-
-# Custom output path
-a11y-audit https://example.com -f html -o ./reports/audit.html
-```
-
-### Verbose Mode
-
-```bash
-# See detailed progress
-a11y-audit https://example.com --verbose
+# Verbose progress
+wcag-audit https://example.com --verbose
 ```
 
 ## Exit Codes
 
 | Code | Meaning |
 |------|---------|
-| 0 | Success - no violations found |
-| 1 | Success - violations found |
+| 0 | Success — no violations found |
+| 1 | Success — violations found |
 | 2 | URL requires authentication |
 | 3 | Invalid input (URL, options) |
 | 4 | Unexpected error |
@@ -102,10 +83,8 @@ a11y-audit https://example.com --verbose
 ### CI/CD Integration
 
 ```bash
-# In your CI pipeline
-a11y-audit https://staging.example.com --format json -o report.json
+wcag-audit https://staging.example.com --format json -o report.json
 
-# Check exit code
 if [ $? -eq 1 ]; then
   echo "Accessibility violations found!"
   # Upload report as artifact, notify team, etc.
@@ -114,29 +93,11 @@ fi
 
 ## Report Contents
 
-### Summary
+**Summary** — accessibility score (0–100%), violation count, items needing manual review, and passing checks.
 
-- **Score**: Overall accessibility score (0-100%)
-- **Violations**: Number of failed checks
-- **Needs Review**: Items requiring manual verification
-- **Passed**: Number of passing checks
+**To-Do List** — each item includes a priority (ranked by impact and effort), a clear remediation task, related WCAG success criteria, the count of affected DOM nodes, and an effort estimate (Low / Medium / High).
 
-### To-Do List
-
-Each item includes:
-- **Priority**: Ranked by impact and effort
-- **Task**: Clear remediation action
-- **WCAG Criteria**: Related success criteria
-- **Affected Elements**: Count of impacted DOM nodes
-- **Effort Estimate**: Low / Medium / High
-
-### Violation Details
-
-- Rule ID and description
-- Impact level (critical, serious, moderate, minor)
-- WCAG success criteria
-- Affected elements with selectors and HTML
-- Links to documentation
+**Violation Details** — rule ID and description, impact level (critical / serious / moderate / minor), WCAG success criteria, affected elements with selectors and HTML, and links to documentation.
 
 ## WCAG Level Coverage
 
@@ -148,111 +109,75 @@ Each item includes:
 
 ## Programmatic Usage
 
+The package root exposes the public library API:
+
 ```javascript
-import { runAudit, shutdown } from './src/core/orchestrator.js';
-import { generateReport } from './src/reporting/generator.js';
-import { buildTodoList } from './src/todo/builder.js';
+import { runAudit, generateReport, saveReport, buildTodoList, shutdown } from '@belikenikola/wcag-audit';
 
-async function audit() {
-  const result = await runAudit('https://example.com', {
-    level: 'AA',
-    timeout: 30000
-  });
+const result = await runAudit('https://example.com', { level: 'AA', timeout: 30000 });
 
-  if (result.success) {
-    const todoList = buildTodoList(result.violations);
-    console.log('To-do items:', todoList.length);
+if (result.success) {
+  const todos = buildTodoList(result.violations);
+  console.log('To-do items:', todos.length);
 
-    const htmlReport = generateReport(result, 'html');
-    // Save or process report...
-  }
-
-  await shutdown();
+  const html = generateReport(result, 'html');
+  await saveReport(result, 'report.html', 'html');
 }
 
-audit();
+await shutdown();
 ```
 
-## Development
+### Serverless / custom Chromium
 
-### Project Structure
+Inject your own browser launcher (e.g. `playwright-core` + `@sparticuz/chromium` on Vercel/Lambda) so you don't have to ship full Playwright:
 
-```
-a11y-audit/
-├── src/
-│   ├── index.js              # CLI entry point
-│   ├── cli.js                # Command definitions
-│   ├── core/
-│   │   ├── orchestrator.js   # Flow coordination
-│   │   ├── renderer.js       # Playwright page loading
-│   │   ├── analyzer.js       # axe-core integration
-│   │   └── auth-detector.js  # Login detection
-│   ├── reporting/
-│   │   ├── generator.js      # Report dispatcher
-│   │   ├── json-formatter.js
-│   │   ├── html-formatter.js
-│   │   └── md-formatter.js
-│   ├── todo/
-│   │   └── builder.js        # To-do list generation
-│   └── utils/
-│       ├── logger.js
-│       └── validators.js
-├── tests/
-│   ├── unit/
-│   ├── integration/
-│   └── fixtures/
-└── package.json
-```
+```javascript
+import { setBrowserLauncher, runAudit, shutdown } from '@belikenikola/wcag-audit';
+import { chromium } from 'playwright-core';
+import chromiumBin from '@sparticuz/chromium';
 
-### Running Tests
+setBrowserLauncher(async () => chromium.launch({
+  args: chromiumBin.args,
+  executablePath: await chromiumBin.executablePath(),
+  headless: true,
+}));
 
-```bash
-# Unit tests
-npm test
-
-# With coverage
-npm run test:coverage
-
-# Integration tests (requires Playwright)
-npm run test:integration
-
-# Watch mode
-npm run test:watch
-```
-
-### Linting
-
-```bash
-npm run lint
-npm run lint:fix
+const result = await runAudit('https://example.com');
+await shutdown();
 ```
 
 ## Limitations
 
-- **JavaScript-rendered content**: Playwright waits for network idle, but highly dynamic SPAs may need longer timeouts
-- **Authentication**: Pages requiring login are detected and skipped
-- **Automated coverage**: ~50% of WCAG criteria can be fully automated; some require manual review
-- **Single page**: Currently audits one URL at a time
+- **JavaScript-rendered content**: Playwright waits for network idle, but highly dynamic SPAs may need longer timeouts.
+- **Authentication**: Pages requiring login are detected and skipped.
+- **Automated coverage**: ~50% of WCAG criteria can be fully automated; some require manual review.
+- **Single page**: Currently audits one URL at a time.
 
 ## Technology Stack
 
-- **[Playwright](https://playwright.dev/)** - Browser automation
-- **[axe-core](https://github.com/dequelabs/axe-core)** - Accessibility testing engine
-- **[Commander.js](https://github.com/tj/commander.js/)** - CLI framework
-- **[Handlebars](https://handlebarsjs.com/)** - HTML templating
-- **[Vitest](https://vitest.dev/)** - Testing framework
+- **[Playwright](https://playwright.dev/)** — Browser automation
+- **[axe-core](https://github.com/dequelabs/axe-core)** — Accessibility testing engine
+- **[Commander.js](https://github.com/tj/commander.js/)** — CLI framework
+- **[Handlebars](https://handlebarsjs.com/)** — HTML templating
+- **[Vitest](https://vitest.dev/)** — Testing framework
+
+## Development
+
+```bash
+git clone https://github.com/belikenikola/accessibility-audit.git
+cd accessibility-audit
+npm install
+npx playwright install chromium
+
+npm test                  # unit tests
+npm run test:coverage     # with coverage
+npm run test:integration  # integration tests (requires Playwright)
+npm run lint
+```
 
 ## License
 
-MIT
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Write tests for new functionality
-4. Ensure all tests pass
-5. Submit a pull request
+MIT — see [LICENSE](./LICENSE).
 
 ## Resources
 
