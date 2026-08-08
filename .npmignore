@@ -1,0 +1,15 @@
+# Tests
+tests/
+vitest.config.js
+vitest.integration.config.js
+
+# Tooling / config
+eslint.config.mjs
+.prettierrc
+.editorconfig
+
+# Sample audit output
+a11y-report-*.json
+
+# OS / editor cruft
+.DS_Store

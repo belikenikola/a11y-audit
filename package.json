@@ -1,39 +1,63 @@
 {
-  "name": "a11y-audit",
-  "version": "1.0.0",
-  "description": "CLI tool for WCAG 2.1 accessibility auditing with actionable reports and to-do lists",
+  "name": "@belikenikola/wcag-audit",
+  "version": "1.1.0",
+  "description": "WCAG 2.1 accessibility auditor — CLI + library. Actionable reports and prioritized to-do lists, powered by axe-core and Playwright.",
   "type": "module",
-  "main": "src/index.js",
-  "bin": {
-    "a11y-audit": "./src/index.js"
+  "main": "./src/lib.js",
+  "exports": {
+    ".": "./src/lib.js",
+    "./package.json": "./package.json"
   },
+  "bin": {
+    "wcag-audit": "./bin/wcag-audit.js"
+  },
+  "files": [
+    "src/",
+    "bin/",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node bin/wcag-audit.js",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:integration": "vitest run --config vitest.integration.config.js",
     "lint": "eslint src tests",
     "lint:fix": "eslint src tests --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prepublishOnly": "npm test"
   },
   "keywords": [
     "accessibility",
     "a11y",
     "wcag",
+    "wcag2",
     "audit",
     "cli",
-    "axe-core"
+    "axe-core",
+    "playwright"
   ],
-  "author": "",
+  "author": "belikenikola",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/belikenikola/accessibility-audit.git"
+  },
+  "homepage": "https://github.com/belikenikola/accessibility-audit#readme",
+  "bugs": {
+    "url": "https://github.com/belikenikola/accessibility-audit/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
-    "@axe-core/playwright": "^4.10.1",
+    "@axe-core/playwright": "^4.11.3",
     "axe-core": "^4.10.2",
     "commander": "^12.1.0",
     "handlebars": "^4.7.8",
     "ora": "^8.1.1",
-    "playwright": "^1.49.1"
+    "playwright": "^1.59.1"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^2.1.8",

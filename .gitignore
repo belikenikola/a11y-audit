@@ -4,3 +4,9 @@
 
 # Node Modules
 node_modules
+
+# OS / editor cruft
+.DS_Store
+
+# Sample audit output
+a11y-report-*.json

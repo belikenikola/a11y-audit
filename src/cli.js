@@ -37,7 +37,7 @@ export function createProgram() {
   const program = new Command();
 
   program
-    .name('a11y-audit')
+    .name('wcag-audit')
     .description('WCAG 2.1 accessibility auditor with actionable reports and to-do lists')
     .version(pkg.version)
     .argument('<url>', 'URL to audit')

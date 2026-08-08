@@ -3,9 +3,12 @@
  * Handles browser lifecycle, page loading, and error states
  */
 
-import { chromium } from 'playwright';
 import { detectAuth } from './auth-detector.js';
 import { logger } from '../utils/logger.js';
+
+// Playwright is imported lazily inside `defaultLauncher` so consumers that inject
+// their own launcher (e.g. serverless with @sparticuz/chromium + playwright-core)
+// don't have to install full playwright.
 
 /**
  * @typedef {Object} RenderResult
@@ -17,10 +20,32 @@ import { logger } from '../utils/logger.js';
  * @property {string} [authReason] - Reason for auth requirement
  */
 
-/**
- * Browser instance cache for reuse
- */
 let browserInstance = null;
+let customLauncher = null;
+
+/**
+ * Inject a custom browser launcher. Call once before `runAudit()`.
+ * The launcher must return a Playwright `Browser` instance.
+ *
+ * @public
+ * @param {() => Promise<import('playwright').Browser>} fn
+ */
+export function setBrowserLauncher(fn) {
+  customLauncher = fn;
+}
+
+async function defaultLauncher() {
+  const { chromium } = await import('playwright');
+  return chromium.launch({
+    headless: true,
+    args: [
+      '--disable-dev-shm-usage',
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-gpu'
+    ]
+  });
+}
 
 /**
  * Launches or returns cached browser instance
@@ -29,15 +54,7 @@ let browserInstance = null;
 async function getBrowser() {
   if (!browserInstance || !browserInstance.isConnected()) {
     logger.debug('Launching new browser instance');
-    browserInstance = await chromium.launch({
-      headless: true,
-      args: [
-        '--disable-dev-shm-usage',
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-gpu'
-      ]
-    });
+    browserInstance = await (customLauncher ?? defaultLauncher)();
   }
   return browserInstance;
 }
