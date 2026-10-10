@@ -164,8 +164,8 @@ await shutdown();
 ## Development
 
 ```bash
-git clone https://github.com/belikenikola/accessibility-audit.git
-cd accessibility-audit
+git clone https://github.com/belikenikola/a11y-audit.git
+cd a11y-audit
 npm install
 npx playwright install chromium
 
