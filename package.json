@@ -1,6 +1,6 @@
 {
   "name": "@belikenikola/wcag-audit",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "WCAG 2.1 accessibility auditor — CLI + library. Actionable reports and prioritized to-do lists, powered by axe-core and Playwright.",
   "type": "module",
   "main": "./src/lib.js",
@@ -42,11 +42,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/belikenikola/accessibility-audit.git"
+    "url": "git+https://github.com/belikenikola/a11y-audit.git"
   },
-  "homepage": "https://github.com/belikenikola/accessibility-audit#readme",
+  "homepage": "https://github.com/belikenikola/a11y-audit#readme",
   "bugs": {
-    "url": "https://github.com/belikenikola/accessibility-audit/issues"
+    "url": "https://github.com/belikenikola/a11y-audit/issues"
   },
   "publishConfig": {
     "access": "public"
